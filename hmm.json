@@ -1,18 +1,14 @@
 {
   "dependencies": [
+     {
+      "name": "lime",
+      "type": "haxelib",
+      "version": "7.9.0"
+    },
     {
       "name": "hxcpp",
       "type": "haxelib",
       "version": "4.2.1"
-    },
-    {
-      "name": "extension-androidtools",
-      "type": "haxelib"
-    },
-    {
-      "name": "lime",
-      "type": "haxelib",
-      "version": "7.9.0"
     },
     {
       "name": "openfl",
@@ -44,6 +40,13 @@
       "type": "git",
       "ref": "master",
       "url": "https://github.com/Aidan63/linc_discord-rpc"
+    },
+    {
+      "name": "extension-androidtools",
+      "type": "git",
+      "dir": null,
+      "ref": "main",
+      "url": "https://github.com/MAJigsaw77/extension-androidtools"
     }
   ]
 }
