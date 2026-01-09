@@ -162,7 +162,7 @@ class Controls
 	public static var instance:Controls;
 	public function new()
 	{
-		keyboardBinds = GameSaves.keyBinds;
-		gamepadBinds = GameSaves.gamepadBinds;
+		keyboardBinds = OptionsSaves.keyBinds;
+		gamepadBinds = OptionsSaves.gamepadBinds;
 	}
 }

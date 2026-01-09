@@ -4,7 +4,7 @@ import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepadInputID;
 
-class GameSaves {
+class OptionsSaves {
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
 		'note_up'		=> [W, UP],
 		'note_left'		=> [A, LEFT],
@@ -74,5 +74,15 @@ class GameSaves {
 	{
 		defaultKeys = keyBinds.copy();
 		defaultButtons = gamepadBinds.copy();
+	}
+	
+	public static function saveControls() {
+		//Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
+		var save:FlxSave = new FlxSave();
+		save.bind('controlsStarEngine', CoolUtil.getSavePath());
+		save.data.keyboard = keyBinds;
+		save.data.gamepad = gamepadBinds;
+		save.flush();
+		FlxG.log.add("Settings saved!");
 	}
 }

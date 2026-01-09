@@ -322,12 +322,6 @@ class Init extends FlxState
 		updateAll();
 	}
 
-	public static function saveControls():Void
-	{
-		FlxG.save.data.gameControls = gameControls;
-		FlxG.save.flush();
-	}
-
 	public static function updateAll()
 	{
 		FlxG.autoPause = trueSettings.get('Auto Pause');

@@ -8,8 +8,10 @@ import flixel.sound.FlxSound;
 import flixel.system.FlxSound;
 #end
 
+// Stuff
 import meta.Controls;
-import meta.GameSaves;
+import meta.OptionsSaves;
+import meta.CoolUtil;
 
 #if mobile
 import meta.mobile.data.StorageSystem;

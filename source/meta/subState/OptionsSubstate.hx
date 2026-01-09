@@ -106,9 +106,9 @@ class OptionsSubstate extends MusicBeatSubState
 
 		var arrayTemp:Array<String> = [];
 		// re-sort everything according to the list numbers
-		for (controlString in Init.gameControls.keys())
+		for (controlString in OptionsSaves.keyBinds.keys())
 		{
-			arrayTemp[Init.gameControls.get(controlString)[1]] = controlString;
+			arrayTemp[OptionsSaves.keyBinds.get(controlString)[1]] = controlString;
 		}
 		// hiding this on neko platforms, as you can't even use offsets on those -Ghost
 		#if !neko arrayTemp.push("EDIT OFFSET"); #end // append edit offset to the end of the array
@@ -146,8 +146,8 @@ class OptionsSubstate extends MusicBeatSubState
 			{
 				var keyString = "";
 
-				if (Init.gameControls.exists(arrayTemp[i]))
-					keyString = getStringKey(Init.gameControls.get(arrayTemp[i])[0][j]);
+				if (OptionsSaves.keyBinds.exists(arrayTemp[i]))
+					keyString = getStringKey(OptionsSaves.keyBinds.get(arrayTemp[i])[0][j]);
 
 				var secondaryText:Alphabet = new Alphabet(0, 0, keyString, false, false);
 				secondaryText.screenCenter();
@@ -303,7 +303,7 @@ class OptionsSubstate extends MusicBeatSubState
 	override public function close()
 	{
 		//
-		Init.saveControls(); // for controls
+		OptionsSaves.saveControls(); // for controls
 		Init.saveSettings(); // for offset
 		super.close();
 	}

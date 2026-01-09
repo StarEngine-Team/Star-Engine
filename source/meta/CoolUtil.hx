@@ -82,6 +82,14 @@ class CoolUtil
 			swagOffsets.push(i.split('--'));
 		return swagOffsets;
 	}
+	
+	@:access(flixel.util.FlxSave.validate)
+	inline public static function getSavePath():String {
+		final company:String = FlxG.stage.application.meta.get('company');
+		// #if (flixel < "5.0.0") return company; #else
+		return '${company}/${flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file'))}';
+		// #end
+	}
 
 	public static function numberArray(max:Int, ?min = 0):Array<Int>
 	{
