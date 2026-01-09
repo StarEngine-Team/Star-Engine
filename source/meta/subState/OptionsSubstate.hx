@@ -147,7 +147,7 @@ class OptionsSubstate extends MusicBeatSubState
 				var keyString = "";
 
 				if (OptionsSaves.keyBinds.exists(arrayTemp[i]))
-					keyString = getStringKey(OptionsSaves.keyBinds.get(arrayTemp[i])[0][j]);
+					keyString = Std.string(OptionsSaves.keyBinds.get(arrayTemp[i])[0][j]);
 
 				var secondaryText:Alphabet = new Alphabet(0, 0, keyString, false, false);
 				secondaryText.screenCenter();
@@ -358,7 +358,7 @@ class OptionsSubstate extends MusicBeatSubState
 				 */
 
 				// now check if its the key we want to change
-				OptionsSaves.keyBinds.get(keyOptions.members[curSelection].text.replace(' ', '_'))[0][curHorizontalSelection] = checkKey;
+				OptionsSaves.keyBinds.get(keyOptions.members[curSelection].text.replace(' ', '_'))[curHorizontalSelection] = checkKey;
 				otherKeys.members[(curSelection * 2) + curHorizontalSelection].text = getStringKey(checkKey);
 
 				// update all keys on screen to have the right values
