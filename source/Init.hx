@@ -225,7 +225,7 @@ class Init extends FlxState
 		Highscore.load();
 
 		loadSettings();
-		loadControls();
+		OptionsSaves.loadOptions();
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
@@ -289,29 +289,6 @@ class Init extends FlxState
 			FlxG.sound.volume = FlxG.save.data.volume;
 		if (FlxG.save.data.mute != null)
 			FlxG.sound.muted = FlxG.save.data.mute;
-	}
-
-	public static function loadControls():Void
-	{
-		var save:FlxSave = new FlxSave();
-		save.bind('controlsStarEngine', CoolUtil.getSavePath());
-		if(save != null)
-		{
-			if(save.data.keyboard != null)
-			{
-				var loadedControls:Map<String, Array<FlxKey>> = save.data.keyboard;
-				for (control => keys in loadedControls)
-					if(keyBinds.exists(control)) keyBinds.set(control, keys);
-			}
-			if(save.data.gamepad != null)
-			{
-				var loadedControls:Map<String, Array<FlxGamepadInputID>> = save.data.gamepad;
-				for (control => keys in loadedControls)
-					if(gamepadBinds.exists(control)) gamepadBinds.set(control, keys);
-			}
-		}
-
-		OptionsSaves.saveControls();
 	}
 
 	public static function saveSettings():Void

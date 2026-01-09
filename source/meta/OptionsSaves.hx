@@ -85,4 +85,25 @@ class OptionsSaves {
 		save.flush();
 		FlxG.log.add("Settings saved!");
 	}
+	
+	public static function loadOptions() {
+	
+	    var save:FlxSave = new FlxSave();
+		save.bind('controlsStarEngine', CoolUtil.getSavePath());
+		if(save != null)
+		{
+			if(save.data.keyboard != null)
+			{
+				var loadedControls:Map<String, Array<FlxKey>> = save.data.keyboard;
+				for (control => keys in loadedControls)
+					if(keyBinds.exists(control)) keyBinds.set(control, keys);
+			}
+			if(save.data.gamepad != null)
+			{
+				var loadedControls:Map<String, Array<FlxGamepadInputID>> = save.data.gamepad;
+				for (control => keys in loadedControls)
+					if(gamepadBinds.exists(control)) gamepadBinds.set(control, keys);
+			}
+		}
+	}
 }
