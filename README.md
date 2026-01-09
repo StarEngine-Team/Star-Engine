@@ -7,7 +7,7 @@
 
 ----------------------------------------------
 # Features
-* Nothing, for now
+* Gamepad Support
 
 # Features (Forever Engine):
 * Noteskins;
