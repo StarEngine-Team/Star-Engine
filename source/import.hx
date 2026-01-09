@@ -6,6 +6,8 @@ import flixel.sound.FlxSound;
 import flixel.system.FlxSound;
 #end
 
+import meta.GameSaves;
+
 #if mobile
 import meta.mobile.data.StorageSystem;
 #end

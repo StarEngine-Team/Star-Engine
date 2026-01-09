@@ -235,7 +235,7 @@ class Init extends FlxState
 
 	override public function create():Void
 	{
-		FlxG.save.bind('foreverengine-options');
+		FlxG.save.bind('starengine-options');
 		Highscore.load();
 
 		loadSettings();
