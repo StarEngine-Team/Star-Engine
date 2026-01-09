@@ -38,7 +38,7 @@ class Main extends Sprite
 
 	public static final gameVersion:String = '0.1.0';
 
-	// var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
+	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var infoCounter:Overlay; // initialize the heads up display that shows information before creating it.
 
@@ -127,7 +127,7 @@ class Main extends Sprite
 		// if you've used gamemaker you'll probably understand the term surface better
 		// this defines the surface bounds
 
-		/* // no longer serves purpose due to flixel 5 changes
+		// no longer serves purpose due to flixel 5 changes
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -141,11 +141,10 @@ class Main extends Sprite
 			// this just kind of sets up the camera zoom in accordance to the surface width and camera zoom.
 			// if set to negative one, it is done so automatically, which is the default.
 		}
-		*/
 
 		// here we set up the base game
 		var gameCreate:FlxGame;
-		gameCreate = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") -1, #end framerate, framerate, skipSplash);
+		gameCreate = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash);
 		addChild(gameCreate); // and create it afterwards
 
 		// default game FPS settings, I'll probably comment over them later.
@@ -222,7 +221,7 @@ class Main extends Sprite
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		path = 'crash/FE_$dateNow.txt';
+		path = 'crash/Crash_$dateNow.txt';
 
 		for (stackItem in callStack)
 		{
@@ -236,7 +235,7 @@ class Main extends Sprite
 		}
 
 		errMsg += "\nUncaught Error: " + e.error;
-		//errMsg += "\nPlease report this error to the GitHub page: https://github.com/CrowPlexus-FNF/Forever-Engine-Legacy";
+		//errMsg += "\nPlease report this error to the GitHub page: https://github.com/StarEngine-Team/Star-Engine";
 
 		if (!FileSystem.exists("crash/"))
 			FileSystem.createDirectory("crash/");
