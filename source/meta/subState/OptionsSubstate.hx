@@ -150,7 +150,7 @@ class OptionsSubstate extends MusicBeatSubState
 					keyString = Std.string(OptionsSaves.keyBinds.get(arrayTemp[i])[j]);
 
 				var secondaryText:Alphabet = new Alphabet(0, 0, keyString, false, false);
-				secondaryText.screenCenter();
+				secondaryText.distancePerItem.y = 60;
 				secondaryText.y += FlxG.height * 2;
 				secondaryText.targetY = i;
 				secondaryText.disableX = true;
