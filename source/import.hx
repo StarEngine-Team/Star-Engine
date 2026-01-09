@@ -1,5 +1,7 @@
 #if !macro
 
+//Flixel
+import flixel.FlxG;
 #if (flixel > "5.3.0")
 import flixel.sound.FlxSound;
 #else
