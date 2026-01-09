@@ -300,10 +300,10 @@ class PlayState extends MusicBeatState
 
 		//
 		keysArray = [
-			copyKey(Init.gameControls.get('LEFT')[0]),
-			copyKey(Init.gameControls.get('DOWN')[0]),
-			copyKey(Init.gameControls.get('UP')[0]),
-			copyKey(Init.gameControls.get('RIGHT')[0])
+			copyKey(OptionsSaves.keyBinds.get('note_left')),
+			copyKey(OptionsSaves.keyBinds.get('note_down')),
+			copyKey(OptionsSaves.keyBinds.get('note_up')),
+			copyKey(OptionsSaves.keyBinds.get('note_right'))
 		];
 
 		if (!Init.trueSettings.get('Controller Mode'))
