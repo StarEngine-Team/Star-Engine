@@ -3,7 +3,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="FNF' Star Engine" file="StarEngine" packageName="com.crowplexus.foreverenginelegacy" package="com.crowplexus.foreverenginelegacy" main="Main" company="crowplexus" />
+	<app title="FNF' Star Engine" file="StarEngine" packageName="com.starteam.starengine" package="com.starteam.starengine" main="Main" company="StarTeam" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -47,6 +47,23 @@
 	<haxelib name="discord_rpc" if="cpp" unless="mobile"/>
 	<haxelib name="hxcpp-debug-server" if="debug" />
 	<haxelib name="extension-androidtools" if="android"/>
+	
+	<!-- _______________________________ Settings ______________________________ -->
+		
+	<!-- Mobile Shit -->
+    <section if="android">
+    <config:android permission="android.permission.MANAGE_MEDIA"/> 
+	<config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+	<config:android permission="android.permission.READ_MEDIA_IMAGES"/>
+	<config:android permission="android.permission.READ_MEDIA_AUDIO"/>
+	<config:android permission="android.permission.READ_MEDIA_VIDEO"/>
+	<config:android permission="android.permission.CAPTURE_AUDIO_OUTPUT" />
+	<android target-sdk-version="34" />
+	<android min-sdk-version="19" />
+	<certificate path="key.keystore" password="starengine" alias="starengine" alias-password="starengine" unless="test" />
+    </section>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
