@@ -36,7 +36,7 @@ jobs:
           haxelib run hmm install --quiet
 
       - name: Building
-        run: haxelib run lime build windows -release
+        run: haxelib run lime build windows -final
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
@@ -113,7 +113,7 @@ jobs:
           haxelib run lime config ANDROID_SETUP true
 
       - name: Building
-        run: haxelib run lime build android -release
+        run: haxelib run lime build android -final
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
