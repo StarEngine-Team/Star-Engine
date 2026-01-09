@@ -110,8 +110,9 @@ class Main extends Sprite
 		super();
 		
 		#if mobile
-        import meta.mobile.data.StorageSystem;
-        #end
+		StorageSystem.getPermissions();
+		Sys.setCwd(StorageSystem.getStorageDirectory());
+		#end
 
 		/**
 			ok so, haxe html5 CANNOT do 120 fps. it just cannot.
