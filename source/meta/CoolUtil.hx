@@ -2,6 +2,7 @@ package meta;
 
 import lime.utils.Assets;
 import meta.state.PlayState;
+import flixel.util.FlxSave;
 
 using StringTools;
 

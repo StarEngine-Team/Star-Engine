@@ -2,6 +2,7 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.FlxGraphic;
+import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import meta.CoolUtil;
 import meta.Overlay;
@@ -292,8 +293,23 @@ class Init extends FlxState
 
 	public static function loadControls():Void
 	{
-		if ((FlxG.save.data.gameControls != null) && (Lambda.count(FlxG.save.data.gameControls) == Lambda.count(gameControls)))
-			gameControls = FlxG.save.data.gameControls;
+		var save:FlxSave = new FlxSave();
+		save.bind('controlsStarEngine', CoolUtil.getSavePath());
+		if(save != null)
+		{
+			if(save.data.keyboard != null)
+			{
+				var loadedControls:Map<String, Array<FlxKey>> = save.data.keyboard;
+				for (control => keys in loadedControls)
+					if(keyBinds.exists(control)) keyBinds.set(control, keys);
+			}
+			if(save.data.gamepad != null)
+			{
+				var loadedControls:Map<String, Array<FlxGamepadInputID>> = save.data.gamepad;
+				for (control => keys in loadedControls)
+					if(gamepadBinds.exists(control)) gamepadBinds.set(control, keys);
+			}
+		}
 
 		OptionsSaves.saveControls();
 	}

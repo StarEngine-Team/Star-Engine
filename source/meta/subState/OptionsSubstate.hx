@@ -358,7 +358,7 @@ class OptionsSubstate extends MusicBeatSubState
 				 */
 
 				// now check if its the key we want to change
-				Init.gameControls.get(keyOptions.members[curSelection].text.replace(' ', '_'))[0][curHorizontalSelection] = checkKey;
+				OptionsSaves.keyBinds.get(keyOptions.members[curSelection].text.replace(' ', '_'))[0][curHorizontalSelection] = checkKey;
 				otherKeys.members[(curSelection * 2) + curHorizontalSelection].text = getStringKey(checkKey);
 
 				// update all keys on screen to have the right values
