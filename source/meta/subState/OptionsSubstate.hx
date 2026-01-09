@@ -147,7 +147,7 @@ class OptionsSubstate extends MusicBeatSubState
 				var keyString = "";
 
 				if (OptionsSaves.keyBinds.exists(arrayTemp[i]))
-					keyString = getStringKey(OptionsSaves.keyBinds.get(arrayTemp[i])[0][j]);
+					keyString = Std.string(OptionsSaves.keyBinds.get(arrayTemp[i])[j]);
 
 				var secondaryText:Alphabet = new Alphabet(0, 0, keyString, false, false);
 				secondaryText.y += FlxG.height * 2;
@@ -164,24 +164,6 @@ class OptionsSubstate extends MusicBeatSubState
 		}
 		add(otherKeys);
 	}
-
-	private function getStringKey(arrayThingy:Dynamic):String
-    {
-        var keyString:String = 'none';
-    
-        if (arrayThingy != null)
-        {
-             var key:Dynamic = (Std.isOfType(arrayThingy, Array)) ? arrayThingy[0] : arrayThingy;
-        
-             var keyDisplay:FlxKey = key;
-             if (keyDisplay != null) {
-                  keyString = keyDisplay.toString();
-             }
-        }
-
-       if (keyString == null) keyString = 'none';
-         return keyString.replace(" ", "");
-    }
 
 	private function updateSelection(equal:Int = 0)
 	{
