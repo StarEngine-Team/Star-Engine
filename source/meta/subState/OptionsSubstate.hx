@@ -361,9 +361,6 @@ class OptionsSubstate extends MusicBeatSubState
 				Init.gameControls.get(keyOptions.members[curSelection].text.replace(' ', '_'))[0][curHorizontalSelection] = checkKey;
 				otherKeys.members[(curSelection * 2) + curHorizontalSelection].text = getStringKey(checkKey);
 
-				// refresh keys
-				controls.setKeyboardScheme(None, false);
-
 				// update all keys on screen to have the right values
 				// inefficient so I rewrote it lolllll
 				/*for (i in 0...otherKeys.members.length)
