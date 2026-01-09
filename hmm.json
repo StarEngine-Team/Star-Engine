@@ -9,8 +9,10 @@
     },
     {
       "name": "hxcpp",
-      "type": "haxelib",
-      "version": "4.2.1"
+      "type": "git",
+      "dir": null,
+      "ref": "master",
+      "url": "https://github.com/MaysLastPlays-Stuff/hxcpp-h"
     },
     {
       "name": "openfl",
