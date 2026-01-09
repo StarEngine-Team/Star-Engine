@@ -147,7 +147,7 @@ class OptionsSubstate extends MusicBeatSubState
 				var keyString = "";
 
 				if (OptionsSaves.keyBinds.exists(arrayTemp[i]))
-					keyString = Std.string(OptionsSaves.keyBinds.get(arrayTemp[i])[0][j]);
+					keyString = Std.string(OptionsSaves.keyBinds.get(arrayTemp[i])[j]);
 
 				var secondaryText:Alphabet = new Alphabet(0, 0, keyString, false, false);
 				secondaryText.screenCenter();
