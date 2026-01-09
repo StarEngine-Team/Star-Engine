@@ -151,10 +151,10 @@ class OptionsSubstate extends MusicBeatSubState
 
 				var secondaryText:Alphabet = new Alphabet(0, 0, keyString, false, false);
 				secondaryText.screenCenter();
-				secondaryText.y += (90 * (i - (arrayTemp.length * 0.5)));
+				secondaryText.y += FlxG.height * 2;
 				secondaryText.targetY = i;
 				secondaryText.disableX = true;
-				secondaryText.xTo += ((j + 1) * 600);
+				secondaryText.xTo += ((j + 1) * 420);
 				secondaryText.isMenuItem = true;
 				secondaryText.alpha = 0.6;
 

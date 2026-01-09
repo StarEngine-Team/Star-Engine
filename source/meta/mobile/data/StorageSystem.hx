@@ -62,7 +62,9 @@ class StorageSystem {
             }
 		}
 
-		Tools.showAlertDialog("Requires permissions", "Please allow the necessary permissions to play.\nPress OK & let's see what happens", {name: "OK", func: null}, null);
+        if (Permissions.getGrantedPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'])) {
+		   Tools.showAlertDialog("Requires permissions", "Please allow the necessary permissions to play.\nPress OK & let's see what happens", {name: "OK", func: null}, null);
+		}
         #else
         trace("Permissions request not required or not implemented for this platform.");
         #end
