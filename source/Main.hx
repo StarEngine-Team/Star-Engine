@@ -11,7 +11,6 @@ import haxe.CallStack;
 import haxe.io.Path;
 import lime.app.Application;
 import meta.*;
-import meta.data.PlayerSettings;
 import meta.data.dependency.Discord;
 import meta.data.dependency.FNFTransition;
 import openfl.Assets;
@@ -163,9 +162,6 @@ class Main extends Sprite
 		Discord.initializeRPC();
 		Discord.changePresence('');
 		#end
-
-		// test initialising the player settings
-		PlayerSettings.init();
 
 		infoCounter = new Overlay(0, 0);
 		addChild(infoCounter);

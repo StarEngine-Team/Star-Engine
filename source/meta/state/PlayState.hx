@@ -864,7 +864,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// reset bf's animation
-		var holdControls:Array<Bool> = [controls.LEFT, controls.DOWN, controls.UP, controls.RIGHT];
+		var holdControls:Array<Bool> = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
 		if ((boyfriend != null && boyfriend.animation != null)
 			&& (boyfriend.holdTimer > Conductor.stepCrochet * (4 * 0.001) && (!holdControls.contains(true) || plrStrums.autoplay)))
 		{
@@ -1053,7 +1053,7 @@ class PlayState extends MusicBeatState
 			//
 		}
 
-		var holdControls:Array<Bool> = [controls.LEFT, controls.DOWN, controls.UP, controls.RIGHT];
+		var holdControls:Array<Bool> = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
 		if (!autoplay)
 		{
 			// check if anything is held
