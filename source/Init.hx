@@ -186,21 +186,6 @@ class Init extends FlxState
 	public static var trueSettings:Map<String, Dynamic> = [];
 	public static var settingsDescriptions:Map<String, String> = [];
 
-	public static var gameControls:Map<String, Dynamic> = [
-		'UP' => [[FlxKey.UP, W], 2],
-		'DOWN' => [[FlxKey.DOWN, S], 1],
-		'LEFT' => [[FlxKey.LEFT, A], 0],
-		'RIGHT' => [[FlxKey.RIGHT, D], 3],
-		'ACCEPT' => [[FlxKey.SPACE, Z, FlxKey.ENTER], 4],
-		'BACK' => [[FlxKey.BACKSPACE, X, FlxKey.ESCAPE], 5],
-		'PAUSE' => [[FlxKey.ENTER, P], 6],
-		'RESET' => [[R, null], 13],
-		'UI_UP' => [[FlxKey.UP, W], 8],
-		'UI_DOWN' => [[FlxKey.DOWN, S], 9],
-		'UI_LEFT' => [[FlxKey.LEFT, A], 10],
-		'UI_RIGHT' => [[FlxKey.RIGHT, D], 11],
-	];
-
 	public static var filters:Array<BitmapFilter> = []; // the filters the game has active
 	/// initalise filters here
 	public static var gameFilters:Map<String, {filter:BitmapFilter, ?onUpdate:Void->Void}> = [
@@ -310,7 +295,7 @@ class Init extends FlxState
 		if ((FlxG.save.data.gameControls != null) && (Lambda.count(FlxG.save.data.gameControls) == Lambda.count(gameControls)))
 			gameControls = FlxG.save.data.gameControls;
 
-		saveControls();
+		OptionsSaves.saveControls();
 	}
 
 	public static function saveSettings():Void

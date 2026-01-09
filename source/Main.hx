@@ -164,7 +164,7 @@ class Main extends Sprite
 		#end
 
 		Controls.instance = new Controls();
-		GameSaves.loadDefaultKeys();
+		OptionsSaves.loadDefaultKeys();
 
 		infoCounter = new Overlay(0, 0);
 		addChild(infoCounter);
