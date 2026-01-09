@@ -32,9 +32,11 @@ class MusicBeatState extends FlxUIState
 	function updateBar() curBar = Math.floor(curBeat * 0.25);
 	function updateBeat() curBeat = Math.floor(curStep * 0.25);
 
-	private var controls(get, never):Controls;
-	inline function get_controls():Controls
-		return PlayerSettings.player1.controls;
+	public var controls(get, never):Controls;
+	private function get_controls()
+	{
+		return Controls.instance;
+	}
 
 	// class create event
 	override function create()
@@ -154,9 +156,11 @@ class MusicBeatSubState extends FlxSubState
 	function updateBar() curBar = Math.floor(curBeat * 0.25);
 	function updateBeat() curBeat = Math.floor(curStep * 0.25);
 
-	private var controls(get, never):Controls;
-	inline function get_controls():Controls
-		return PlayerSettings.player1.controls;
+	public var controls(get, never):Controls;
+	private function get_controls()
+	{
+		return Controls.instance;
+	}
 
 	// class 'step' event
 	override function update(elapsed:Float)
