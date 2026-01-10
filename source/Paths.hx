@@ -169,38 +169,27 @@ class Paths
 	}
 
 	//
-	inline public static function getPath(file:String, type:AssetType, ?library:Null<String>)
+	public static function getPath(file:String, ?type:AssetType = TEXT, ?parentfolder:String, ?modsAllowed:Bool = true):String
 	{
-		/*
-				Okay so, from what I understand, this loads in the current path based on the level
-				we're in (if a library is not specified), say like week 1 or something, 
-				then checks if the assets you're looking for are there.
-				if not, it checks the shared assets folder.
-			// */
+		#if MODS_ALLOWED
+		if(modsAllowed)
+		{
+			var customFile:String = file;
+			if (parentfolder != null) customFile = '$parentfolder/$file';
 
-		// well I'm rewriting it so that the library is the path and it looks for the file type
-		// later lmao I don't really wanna rn
+			var modded:String = modFolders(customFile);
+			if(FileSystem.exists(modded)) return modded;
+		}
+		#end
 
-		if (library != null)
-			return getLibraryPath(file, library);
+		if (parentfolder != null)
+			return getLibraryPath(file, parentfolder);
 
-		/*
-			if (currentLevel != null)
-			{
-				levelPath = getLibraryPathForce(file, currentLevel);
-				if (OpenFlAssets.exists(levelPath, type))
-					return levelPath;
-
-				levelPath = getLibraryPathForce(file, "shared");
-				if (OpenFlAssets.exists(levelPath, type))
-					return levelPath;
-		}*/
-
-		var levelPath = getLibraryPathForce(file, "mods");
-		if (OpenFlAssets.exists(levelPath, type))
-			return levelPath;
-
-		return getPreloadPath(file);
+			var levelPath = getLibraryPath(file, currentLevel);
+			if (OpenFlAssets.exists(levelPath, type))
+				return levelPath;
+				
+		return getPreloadPath(file);;
 	}
 
 	// files!
@@ -264,7 +253,7 @@ class Paths
 	}
 
 	inline static public function songJson(song:String, secondSong:String, ?library:String)
-		return getPath('songs/${song.toLowerCase()}/${secondSong.toLowerCase()}.json', TEXT, library);
+		return getPath('songs/${song.toLowerCase()}/charts/${secondSong.toLowerCase()}.json', TEXT, library);
 
 	static public function sound(key:String, ?library:String):Dynamic
 	{
@@ -285,14 +274,14 @@ class Paths
 
 	inline static public function voices(song:String):Any
 	{
-		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/Voices';
+		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/song/Voices';
 		var voices = returnSound('songs', songKey);
 		return voices;
 	}
 
 	inline static public function inst(song:String):Any
 	{
-		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/Inst';
+		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/song/Inst';
 		var inst = returnSound('songs', songKey);
 		return inst;
 	}

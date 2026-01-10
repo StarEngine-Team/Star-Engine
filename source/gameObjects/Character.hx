@@ -13,9 +13,33 @@ import meta.*;
 import meta.data.*;
 import meta.data.dependency.FNFSprite;
 import meta.state.PlayState;
+import haxe.Json;
 import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
+
+typedef CharacterFile = {
+  var frame:String;
+  var animations:Array<AnimArray>;
+  var scale:Float;
+  var singDuration:Float;
+  var healthIcon:String;
+
+  var cameraOffsets:Array<Float>;
+
+  var flipX:Bool;
+  var offsets:Array<Int>;
+  var noAntialiasing:Bool;
+}
+
+typedef AnimArray = {
+	var anim:String;
+	var name:String;
+	var fps:Int;
+	var loop:Bool;
+	var indices:Array<Int>;
+	var offsets:Array<Int>;
+}
 
 typedef CharacterData =
 {
@@ -34,6 +58,9 @@ class Character extends FNFSprite
 	public var curCharacter:String = 'bf';
 
 	public var holdTimer:Float = 0;
+	
+	// Character Json
+	public var animationsArray:Array<AnimArray> = [];
 
 	public var characterData:CharacterData;
 	public var adjustPos:Bool = true;
@@ -49,6 +76,10 @@ class Character extends FNFSprite
 		curCharacter = character;
 		var tex:FlxAtlasFrames;
 		antialiasing = true;
+		
+		var characterPath:String = 'characters/$character.json';
+
+		var path:String = Paths.getPath(characterPath, TEXT);
 
 		characterData = {
 			offsetY: 0,

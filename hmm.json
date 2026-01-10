@@ -45,6 +45,13 @@
       "version": "2.4.0"
     },
     {
+      "name": "linc_luajit",
+      "type": "git",
+      "dir": null,
+      "ref": "main",
+      "url": "https://github.com/DeveloperPorting-Stuff/linc_luajit"
+    },
+    {
       "name": "discord_rpc",
       "type": "git",
       "ref": "master",
