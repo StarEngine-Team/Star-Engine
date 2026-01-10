@@ -74,7 +74,7 @@ class PolymodInit
 
 	//Checks through the loaded mods to see what mod a file is from. Returns `null` if it's not a mod file.
 	public static function getAssetModFolder(path:String):String{
-		for(mod in loadedModDirs){
+		for(mod in modsLoaded){
 			if(sys.FileSystem.exists('mods/$mod/' + path.split("assets/")[1])){
 				return mod;
 			}
