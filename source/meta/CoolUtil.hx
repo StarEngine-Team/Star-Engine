@@ -35,12 +35,15 @@ class CoolUtil
 		return string.contains('-') ? dashToSpace(string) : spaceToDash(string);
 	}
 
-	public static inline function coolTextFile(path:String):Array<String>
+	inline public static function coolTextFile(path:String):Array<String>
 	{
-		var daList:Array<String> = Assets.getText(path).trim().split('\n');
-		for (i in 0...daList.length)
-			daList[i] = daList[i].trim();
-		return daList;
+		var daList:String = null;
+		#if (sys)
+		if(FileSystem.exists(path)) daList = File.getContent(path);
+		#else
+		if(Assets.exists(path)) daList = Assets.getText(path);
+		#end
+		return daList != null ? listFromString(daList) : [];
 	}
 
 	public static inline function getOffsetsFromTxt(path:String):Array<Array<String>>

@@ -316,4 +316,23 @@ class Paths
 	{
 		return (FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library)));
 	}
+	
+	static public function modFolders(key:String)
+	{
+		if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
+		{
+			var fileToCheck:String = mods(Mods.currentModDirectory + '/' + key);
+			if(FileSystem.exists(fileToCheck))
+				return fileToCheck;
+		}
+
+		for(mod in Mods.getGlobalMods())
+		{
+			var fileToCheck:String = mods(mod + '/' + key);
+			if(FileSystem.exists(fileToCheck))
+				return fileToCheck;
+		}
+		return #if mobile StorageSystem.getDirectory() + #end 'mods/' + key;
+	}
+	#end
 }

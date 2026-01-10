@@ -8,6 +8,16 @@ import flixel.sound.FlxSound;
 import flixel.system.FlxSound;
 #end
 
+#if sys
+import sys.*;
+import sys.io.*;
+#elseif js
+import js.html.*;
+#end
+
+// Mods
+import modding.Mods;
+
 // Stuff
 import meta.Controls;
 import meta.OptionsSaves;
