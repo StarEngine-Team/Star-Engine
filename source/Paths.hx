@@ -156,16 +156,16 @@ class Paths
 		return null;
 	}
 
-	public static function returnSound(path:String, key:String, ?library:String, ?modsAllowed:Bool = true)
+	public static function returnSound(path:String, key:String, ?modsAllowed:Bool = true)
 	{
 		// I hate this so god damn much
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library, modsAllowed);
 		#if sys
 		if(FileSystem.exists(gottenPath))
-			currentTrackedSounds.set(gottenPath, Sound.fromFile(file));
+			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
 		#else
 		if(OpenFlAssets.exists(gottenPath, SOUND))
-			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(file));
+			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(gottenPath));
 		#end
 		localTrackedAssets.push(key);
 		return currentTrackedSounds.get(gottenPath);
@@ -260,32 +260,32 @@ class Paths
 
 	static public function sound(key:String, ?library:String):Dynamic
 	{
-		var sound:Sound = returnSound('sounds', key, library);
+		var sound:Sound = returnSound('sounds', key);
 		return sound;
 	}
 
 	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
 	{
-		return sound(key + FlxG.random.int(min, max), library);
+		return sound(key + FlxG.random.int(min, max));
 	}
 
 	inline static public function music(key:String, ?library:String):Dynamic
 	{
-		var file:Sound = returnSound('music', key, library);
+		var file:Sound = returnSound('music', key);
 		return file;
 	}
 
 	inline static public function voices(song:String, ?modsAllowed:Bool = true):Any
 	{
 		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/song/Voices';
-		var voices = returnSound('songs', songKey, null, modsAllowed);
+		var voices = returnSound('songs', songKey, modsAllowed);
 		return voices;
 	}
 
 	inline static public function inst(song:String, ?modsAllowed:Bool = true):Any
 	{
 		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/song/Inst';
-		var inst = returnSound('songs', songKey, null, modsAllowed);
+		var inst = returnSound('songs', songKey, modsAllowed);
 		return inst;
 	}
 
