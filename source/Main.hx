@@ -167,9 +167,6 @@ class Main extends Sprite
 		Discord.initializeRPC();
 		Discord.changePresence('');
 		#end
-		
-		// Polymods
-		PolymodInit.init();
 
 		Controls.instance = new Controls();
 		OptionsSaves.loadDefaultKeys();
