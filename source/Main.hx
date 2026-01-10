@@ -125,6 +125,11 @@ class Main extends Sprite
 		// simply said, a state is like the 'surface' area of the window where everything is drawn.
 		// if you've used gamemaker you'll probably understand the term surface better
 		// this defines the surface bounds
+		
+		#if LUA_ALLOWED
+		Mods.pushGlobalMods();
+		#end
+		Mods.loadTopMod();
 
 		// no longer serves purpose due to flixel 5 changes
 		var stageWidth:Int = Lib.current.stage.stageWidth;
