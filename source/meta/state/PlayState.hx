@@ -688,7 +688,7 @@ class PlayState extends MusicBeatState
 
 		var justReleaseArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
 
-		if (justPressArray.contains(true))
+		if (controls.controllerMode && justPressArray.contains(true))
 		{
 			for (i in 0...justPressArray.length)
 			{
@@ -697,7 +697,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (justReleaseArray.contains(true))
+		if (controls.controllerMode && justReleaseArray.contains(true))
 		{
 			for (i in 0...justReleaseArray.length)
 			{
