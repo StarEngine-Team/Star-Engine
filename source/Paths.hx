@@ -302,6 +302,9 @@ class Paths
 		var returnAsset:FlxGraphic = returnGraphic(key, library, textureCompression);
 		return returnAsset;
 	}
+	
+	inline public static function getSharedPath(file:String = '')
+		return 'assets/shared/$file';
 
 	inline static public function font(key:String)
 	{
