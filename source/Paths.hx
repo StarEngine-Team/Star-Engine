@@ -334,5 +334,4 @@ class Paths
 		}
 		return #if mobile StorageSystem.getDirectory() + #end 'mods/' + key;
 	}
-	#end
 }
