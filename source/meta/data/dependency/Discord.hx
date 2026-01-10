@@ -16,7 +16,7 @@ class Discord
 	public static function initializeRPC()
 	{
 		DiscordRpc.start({
-			clientID: "1031181637863620708",
+			clientID: "1459518938248511740",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
@@ -33,7 +33,7 @@ class Discord
 			details: "",
 			state: null,
 			largeImageKey: 'fel-logo',
-			largeImageText: "Forever Engine Legacy"
+			largeImageText: "Star Engine"
 		});
 	}
 

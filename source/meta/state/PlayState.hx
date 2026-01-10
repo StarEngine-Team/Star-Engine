@@ -73,7 +73,8 @@ class PlayState extends MusicBeatState
 	private var ratingArray:Array<String> = [];
 	private var allSicks:Bool = true;
 
-	// if you ever wanna add more keys
+	// things for input
+	private var keysArray:Array<String>;
 	private var numberOfKeys:Int = 4;
 
 	// get it cus release
@@ -300,10 +301,10 @@ class PlayState extends MusicBeatState
 
 		//
 		keysArray = [
-			copyKey(OptionsSaves.keyBinds.get('note_left')),
-			copyKey(OptionsSaves.keyBinds.get('note_down')),
-			copyKey(OptionsSaves.keyBinds.get('note_up')),
-			copyKey(OptionsSaves.keyBinds.get('note_right'))
+			'note_left',
+			'note_down',
+			'note_up',
+			'note_right'
 		];
 
 		if (!Init.trueSettings.get('Controller Mode'))
@@ -371,12 +372,10 @@ class PlayState extends MusicBeatState
 		return copiedArray;
 	}
 
-	var keysArray:Array<Dynamic>;
-
 	public function onKeyPress(event:KeyboardEvent):Void
 	{
 		var eventKey:FlxKey = event.keyCode;
-		var key:Int = getKeyFromEvent(eventKey);
+		var key:Int = getKeyFromEvent(keysArray, eventKey);
 		
 		if (!controls.controllerMode)
 		{
@@ -448,7 +447,7 @@ class PlayState extends MusicBeatState
 	public function onKeyRelease(event:KeyboardEvent):Void
 	{
 		var eventKey:FlxKey = event.keyCode;
-		var key:Int = getKeyFromEvent(eventKey);
+		var key:Int = getKeyFromEvent(keysArray, eventKey);
 
          if(!controls.controllerMode && key > -1) keyReleased(key);
 	}
@@ -461,17 +460,16 @@ class PlayState extends MusicBeatState
 				plrStrums.receptors.members[key].playAnim('static');
 	}
 
-	private function getKeyFromEvent(key:FlxKey):Int
+	public static function getKeyFromEvent(arr:Array<String>, key:FlxKey):Int
 	{
-		if (key != NONE)
+		if(key != NONE)
 		{
-			for (i in 0...keysArray.length)
+			for (i in 0...arr.length)
 			{
-				for (j in 0...keysArray[i].length)
-				{
-					if (key == keysArray[i][j])
+				var note:Array<FlxKey> = Controls.instance.keyboardBinds[arr[i]];
+				for (noteKey in note)
+					if(key == noteKey)
 						return i;
-				}
 			}
 		}
 		return -1;
