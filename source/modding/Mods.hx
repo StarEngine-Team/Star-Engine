@@ -48,7 +48,7 @@ class Mods
 	inline public static function getModDirectories():Array<String>
 	{
 		var list:Array<String> = [];
-		//#if MODS_ALLOWED
+		#if MODS_ALLOWED
 		var modsFolder:String = Paths.mods();
 		if(FileSystem.exists(modsFolder)) {
 			for (folder in FileSystem.readDirectory(modsFolder))
@@ -58,7 +58,7 @@ class Mods
 					list.push(folder);
 			}
 		}
-		//#end
+		#end
 		return list;
 	}
 	

@@ -17,6 +17,8 @@ import openfl.utils.Assets as OpenFlAssets;
 import sys.FileSystem;
 import sys.io.File;
 
+import modding.Mods;
+
 class Paths
 {
 	// Here we set up the paths class. This will be used to
@@ -316,6 +318,9 @@ class Paths
 	{
 		return (FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library)));
 	}
+	
+	inline static public function mods(key:String = '')
+		return 'mods/' + key;
 	
 	static public function modFolders(key:String)
 	{

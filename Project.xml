@@ -25,6 +25,10 @@
 
 	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" />
+	
+	<!-- ______________________ PSYCH ENGINE CUSTOMIZATION ______________________ -->
+		
+	<define name="MODS_ALLOWED" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
