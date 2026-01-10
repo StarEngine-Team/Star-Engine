@@ -377,13 +377,24 @@ class PlayState extends MusicBeatState
 	{
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(eventKey);
-
-		if ((key >= 0)
-			&& !plrStrums.autoplay
-			&& (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || Init.trueSettings.get('Controller Mode'))
-			&& (FlxG.keys.enabled && !paused && (FlxG.state.active || FlxG.state.persistentUpdate)))
+		
+		if (!controls.controllerMode)
 		{
-			if (generatedMusic)
+			#if debug
+			//Prevents crash specifically on debug without needing to try catch shit
+			@:privateAccess if (!FlxG.keys._keyListMap.exists(eventKey)) return;
+			#end
+
+			if(FlxG.keys.checkStatus(eventKey, JUST_PRESSED)) keyPressed(key);
+		}
+	}
+	
+	private function keyPressed(key:Int)
+	{
+	   if(plrStrums.autoplay || paused || key < 0 || key >= plrStrums.length || !generatedMusic) return;
+	
+	
+	   if (generatedMusic)
 			{
 				var previousTime:Float = Conductor.songPosition;
 				Conductor.songPosition = songMusic.time;
@@ -432,7 +443,6 @@ class PlayState extends MusicBeatState
 			if (plrStrums.receptors.members[key] != null
 				&& plrStrums.receptors.members[key].animation.curAnim.name != 'confirm')
 				plrStrums.receptors.members[key].playAnim('pressed');
-		}
 	}
 
 	public function onKeyRelease(event:KeyboardEvent):Void
@@ -440,12 +450,15 @@ class PlayState extends MusicBeatState
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(eventKey);
 
-		if (FlxG.keys.enabled && !paused && (FlxG.state.active || FlxG.state.persistentUpdate))
-		{
+         if(!controls.controllerMode && key > -1) keyReleased(key);
+	}
+	
+	private function keyReleased(key:Int)
+	{
+	      if (plrStrums.autoplay || paused || key < 0 || key >= plrStrums.length) return;
 			// receptor reset
 			if (key >= 0 && plrStrums.receptors.members[key] != null)
 				plrStrums.receptors.members[key].playAnim('static');
-		}
 	}
 
 	private function getKeyFromEvent(key:FlxKey):Int
@@ -509,7 +522,7 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 		{
 			// pause the game if the game is allowed to pause and enter is pressed
-			if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
+			if (controls.PAUSE && startedCountdown && canPause)
 			{
 				pauseGame();
 			}
@@ -682,7 +695,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...justPressArray.length)
 			{
 				if (justPressArray[i])
-					onKeyPress(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, true, -1, keysArray[i][0]));
+					keyPressed(i);
 			}
 		}
 
@@ -691,7 +704,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...justReleaseArray.length)
 			{
 				if (justReleaseArray[i])
-					onKeyRelease(new KeyboardEvent(KeyboardEvent.KEY_UP, true, true, -1, keysArray[i][0]));
+					keyReleased(i);
 			}
 		}
 	}
