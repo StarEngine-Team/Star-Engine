@@ -156,14 +156,17 @@ class Paths
 		return null;
 	}
 
-	public static function returnSound(path:String, key:String, ?library:String)
+	public static function returnSound(path:String, key:String, ?library:String, ?modsAllowed:Bool = true)
 	{
 		// I hate this so god damn much
-		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
-		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
-		// trace(gottenPath);
-		if (!currentTrackedSounds.exists(gottenPath))
-			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
+		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library, modsAllowed);
+		#if sys
+		if(FileSystem.exists(gottenPath))
+			currentTrackedSounds.set(gottenPath, Sound.fromFile(file));
+		#else
+		if(OpenFlAssets.exists(gottenPath, SOUND))
+			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(file));
+		#end
 		localTrackedAssets.push(key);
 		return currentTrackedSounds.get(gottenPath);
 	}
@@ -272,17 +275,17 @@ class Paths
 		return file;
 	}
 
-	inline static public function voices(song:String):Any
+	inline static public function voices(song:String, ?modsAllowed:Bool = true):Any
 	{
 		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/song/Voices';
-		var voices = returnSound('songs', songKey);
+		var voices = returnSound('songs', songKey, null, modsAllowed);
 		return voices;
 	}
 
-	inline static public function inst(song:String):Any
+	inline static public function inst(song:String, ?modsAllowed:Bool = true):Any
 	{
 		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/song/Inst';
-		var inst = returnSound('songs', songKey);
+		var inst = returnSound('songs', songKey, null, modsAllowed);
 		return inst;
 	}
 
@@ -313,6 +316,9 @@ class Paths
 	
 	inline static public function mods(key:String = '')
 		return #if mobile StorageSystem.getDirectory() + #end 'mods/' + key;
+		
+	inline static public function modsJson(key:String)
+		return modFolders('songs/' + key + '/charts/' + key + '.json');
 	
 	static public function modFolders(key:String)
 	{

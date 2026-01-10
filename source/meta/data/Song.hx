@@ -44,7 +44,19 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = File.getContent(Paths.songJson(folder.toLowerCase(), jsonInput.toLowerCase())).trim();
+	    #if MODS_ALLOWED
+		var moddyFile:String = Paths.modsJson(folder.toLowerCase(), jsonInput.toLowerCase());
+		if(FileSystem.exists(moddyFile)) {
+			rawJson = File.getContent(moddyFile).trim();
+		}
+		#end
+		
+		#if sys
+			if(FileSystem.exists(folder.toLowerCase(), jsonInput.toLowerCase()))
+				rawJson = File.getContent(Paths.songJson(folder.toLowerCase(), jsonInput.toLowerCase())).trim();
+			else
+		#end
+				rawJson = Assets.getText(Paths.songJson(folder.toLowerCase(), jsonInput.toLowerCase())).trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);
