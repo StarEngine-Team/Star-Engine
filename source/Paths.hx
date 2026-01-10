@@ -189,7 +189,7 @@ class Paths
 			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
 				
-		return getPreloadPath(file);;
+		return getPreloadPath(file);
 	}
 
 	// files!
@@ -312,7 +312,7 @@ class Paths
 	}
 	
 	inline static public function mods(key:String = '')
-		return 'mods/' + key;
+		return #if mobile StorageSystem.getDirectory() + #end 'mods/' + key;
 	
 	static public function modFolders(key:String)
 	{
