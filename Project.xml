@@ -41,7 +41,10 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxedev set='webgl' if="html5" />
+	
+	<lime version="8.1.2" />
 
+    <haxelib name="openfl" />
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
