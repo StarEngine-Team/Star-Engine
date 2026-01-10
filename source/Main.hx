@@ -13,7 +13,6 @@ import lime.app.Application;
 import meta.*;
 import meta.data.dependency.Discord;
 import meta.data.dependency.FNFTransition;
-import modding.PolymodInit;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
