@@ -13,6 +13,7 @@ import lime.app.Application;
 import meta.*;
 import meta.data.dependency.Discord;
 import meta.data.dependency.FNFTransition;
+import modding.PolymodInit;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
@@ -156,12 +157,19 @@ class Main extends Sprite
 			if (e.keyCode == FlxKey.ENTER && e.altKey)
 				e.stopImmediatePropagation();
 		}, false, 100);
+		
+		#if android
+        FlxG.android.preventDefaultKeys = [BACK];
+        #end
 
 		// begin the discord rich presence
 		#if discord_rpc
 		Discord.initializeRPC();
 		Discord.changePresence('');
 		#end
+		
+		// Polymods
+		PolymodInit.init();
 
 		Controls.instance = new Controls();
 		OptionsSaves.loadDefaultKeys();

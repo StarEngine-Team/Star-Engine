@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Originally used by [ninjamuffin99](https://github.com/ninjamuffin99) in the [original Funkin' repo](https://github.com/ninjamuffin99/Funkin/blob/master/CHANGELOG.md).
 
 ---
-
+# Forever Engine
 ## [0.3.2h]
 - Slight optimizations here and there in regards to division;
 
