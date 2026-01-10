@@ -27,4 +27,6 @@ import meta.CoolUtil;
 import meta.mobile.data.StorageSystem;
 #end
 
+
+using StringTools;
 #end
