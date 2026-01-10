@@ -66,7 +66,6 @@ class PolymodInit
 		result.push('.vscode');
 		result.push('.git');
 		result.push('.gitignore');
-		result.push('.gitattributes');
 		result.push('README.md');
 
 		return result;
