@@ -40,6 +40,10 @@ import openfl.media.Sound;
 import openfl.utils.Assets;
 import sys.io.File;
 
+#if LUA_ALLOWED
+import modding.FunkinLua;
+#end
+
 using StringTools;
 
 #if DISCORD_API
@@ -240,6 +244,22 @@ class PlayState extends MusicBeatState
 
 		add(opponent);
 		add(boyfriend);
+		
+		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'scripts/'))
+			for (file in FileSystem.readDirectory(folder))
+			{
+				#if LUA_ALLOWED
+				if(file.toLowerCase().endsWith('.lua'))
+					new FunkinLua(folder + file);
+				#end
+
+				/*#if HSCRIPT_ALLOWED
+				if(file.toLowerCase().endsWith('.hx'))
+					initHScript(folder + file);
+				#end*/
+			}
+		#end
 
 		add(stageBuild.foreground);
 

@@ -322,11 +322,30 @@ class Paths
 		return (FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library)));
 	}
 	
+	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
 		return #if mobile StorageSystem.getDirectory() + #end 'mods/' + key;
 		
+	inline static public function modsFont(key:String)
+		return modFolders('fonts/' + key);
+		
 	inline static public function modsJson(key:String)
 		return modFolders('songs/' + key + '/charts/' + key + '.json');
+
+	inline static public function modsSounds(path:String, key:String)
+		return modFolders(path + '/' + key + '.' + SOUND_EXT);
+
+	inline static public function modsImages(key:String)
+		return modFolders('images/' + key + '.png');
+
+	inline static public function modsXml(key:String)
+		return modFolders('images/' + key + '.xml');
+
+	inline static public function modsTxt(key:String)
+		return modFolders('images/' + key + '.txt');
+
+	inline static public function modsImagesJson(key:String)
+		return modFolders('images/' + key + '.json');
 	
 	static public function modFolders(key:String)
 	{
@@ -345,4 +364,5 @@ class Paths
 		}
 		return #if mobile StorageSystem.getDirectory() + #end 'mods/' + key;
 	}
+	#end
 }

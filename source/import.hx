@@ -8,6 +8,11 @@ import flixel.sound.FlxSound;
 import flixel.system.FlxSound;
 #end
 
+#if LUA_ALLOWED
+import llua.*;
+import llua.Lua;
+#end
+
 #if sys
 import sys.*;
 import sys.io.*;
