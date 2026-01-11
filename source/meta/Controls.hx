@@ -112,7 +112,7 @@ class Controls
 		var result:Bool = (FlxG.keys.anyJustReleased(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
 
-		return result || _myGamepadJustReleased(gamepadBinds[key]) == true #end || mobileCJustReleased(mobileBinds[key]) == true || virtualPadJustReleased(mobileBinds[key]) == true #end;
+		return result || _myGamepadJustReleased(gamepadBinds[key]) == true #if mobile || hitboxJustReleased(mobileBinds[key]) == true || virtualPadJustReleased(mobileBinds[key]) == true #end;
 	}
 
 	public var controllerMode:Bool = false;
