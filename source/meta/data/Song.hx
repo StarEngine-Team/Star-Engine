@@ -56,11 +56,11 @@ class Song
 		#end
 		
 		#if sys
-			if(FileSystem.exists(folder.toLowerCase(), jsonInput.toLowerCase()))
-				rawJson = File.getContent(Paths.songJson(folder.toLowerCase(), jsonInput.toLowerCase())).trim();
+			if(FileSystem.exists(formattedFolder + '/' + formattedSong)
+				rawJson = File.getContent(Paths.songJson(formattedFolder + '/' + formattedSong)).trim();
 			else
 		#end
-				rawJson = Assets.getText(Paths.songJson(folder.toLowerCase(), jsonInput.toLowerCase())).trim();
+				rawJson = Assets.getText(Paths.songJson(formattedFolder + '/' + formattedSong)).trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);
