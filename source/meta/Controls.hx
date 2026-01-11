@@ -4,9 +4,7 @@ import flixel.input.gamepad.FlxGamepadButton;
 import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.gamepad.mappings.FlxGamepadMapping;
 import flixel.input.keyboard.FlxKey;
-#if mobile
 import meta.mobile.flixel.input.FlxMobileInputID;
-#end
 
 class Controls
 {
