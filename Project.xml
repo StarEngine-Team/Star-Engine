@@ -73,7 +73,7 @@
 	<config:android permission="android.permission.CAPTURE_AUDIO_OUTPUT" />
 	<android target-sdk-version="34" />
 	<android min-sdk-version="19" />
-	<certificate path="key.keystore" password="starengine" alias="starengine" alias-password="starengine" unless="test" />
+	<certificate path="key.keystore" password="starengine" alias="starengine" alias-password="starengine" unless="test || desktop" />
     </section>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
