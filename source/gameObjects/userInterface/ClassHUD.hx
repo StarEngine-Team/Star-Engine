@@ -212,9 +212,11 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			}
 		}
 
+     #if DISCORD_API
 		// update game
 		PlayState.detailsSub = scoreBar.text;
 		PlayState.updateRPC(false);
+	  #enx
 	}
 
 	public function beatHit()
