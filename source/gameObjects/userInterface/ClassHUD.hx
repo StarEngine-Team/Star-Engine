@@ -216,7 +216,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// update game
 		PlayState.detailsSub = scoreBar.text;
 		PlayState.updateRPC(false);
-	  #enx
+	  #end
 	}
 
 	public function beatHit()
