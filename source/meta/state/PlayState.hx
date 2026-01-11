@@ -309,11 +309,8 @@ class PlayState extends MusicBeatState
 			'note_right'
 		];
 
-		if (!Init.trueSettings.get('Controller Mode'))
-		{
-			FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-			FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-		}
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 
 		Paths.clearUnusedMemory();
 
@@ -479,11 +476,8 @@ class PlayState extends MusicBeatState
 
 	override public function destroy()
 	{
-		if (!Init.trueSettings.get('Controller Mode'))
-		{
-			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-		}
+		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 
 		super.destroy();
 	}
@@ -678,8 +672,7 @@ class PlayState extends MusicBeatState
 
 			noteCalls();
 
-			if (Init.trueSettings.get('Controller Mode'))
-				controllerInput();
+			controllerInput();
 		}
 	}
 

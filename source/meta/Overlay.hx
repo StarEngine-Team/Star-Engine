@@ -10,6 +10,8 @@ import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 
+import meta.data.macro.GitCommitMacro;
+
 
 /**
 	Overlay that displays FPS and memory usage.
@@ -68,6 +70,7 @@ class Overlay extends TextField
 			if (displayMemory) // Current and Total Memory Usage
 				text += '${FlxStringUtil.formatBytes(mem)} / ${FlxStringUtil.formatBytes(memPeak)}\n';
 		}
+		text += 'Commit: ${GitCommitMacro.commitNumber} (${GitCommitMacro.commitHash})';
 	}
 
 	public static function updateDisplayInfo(shouldDisplayFps:Bool, shouldDisplayExtra:Bool, shouldDisplayMemory:Bool)
