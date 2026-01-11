@@ -30,6 +30,7 @@
 		
 	<define name="MODS_ALLOWED" />
 	<define name="LUA_ALLOWED"/>
+	<define name="DISCORD_API" if="desktop"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -54,7 +55,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="tjson" version="1.4.0"/>
-	<haxelib name="discord_rpc" if="cpp" unless="mobile"/>
+	<haxelib name="discord_rpc" if="DISCORD_API"/>
 	<haxelib name="hxcpp-debug-server" if="debug" />
 	<haxelib name="extension-androidtools" if="android"/>
 	

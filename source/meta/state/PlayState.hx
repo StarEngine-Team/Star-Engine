@@ -42,7 +42,7 @@ import sys.io.File;
 
 using StringTools;
 
-#if desktop
+#if DISCORD_API
 import meta.data.dependency.Discord;
 #end
 
@@ -87,10 +87,12 @@ class PlayState extends MusicBeatState
 	private var camFollow:FlxObject;
 	private var camFollowPos:FlxObject;
 
+	#if DISCORD_API
 	// Discord RPC variables
 	public static var songDetails:String = "";
 	public static var detailsSub:String = "";
 	public static var detailsPausedText:String = "";
+	#end
 
 	private static var prevCamFollow:FlxObject;
 
@@ -660,7 +662,7 @@ class PlayState extends MusicBeatState
 
 				FlxG.sound.play(Paths.sound('fnf_loss_sfx' + GameOverSubstate.stageSuffix));
 
-				#if discord_rpc
+				#if DISCORD_API
 				Discord.changePresence("Game Over - " + songDetails, detailsSub, iconRPC);
 				#end
 			}
@@ -1157,7 +1159,7 @@ class PlayState extends MusicBeatState
 
 	public static function updateRPC(pausedRPC:Bool)
 	{
-		#if discord_rpc
+		#if DISCORD_API
 		var displayRPC:String = (pausedRPC) ? detailsPausedText : songDetails;
 
 		if (PlayState.current.health > 0)
@@ -1379,7 +1381,7 @@ class PlayState extends MusicBeatState
 
 			resyncVocals();
 
-			#if desktop
+			#if DISCORD_API
 			// Song duration in a float, useful for the time left feature
 			songLength = songMusic.length;
 
@@ -1396,6 +1398,7 @@ class PlayState extends MusicBeatState
 		var songData = SONG;
 		Conductor.changeBPM(songData.bpm);
 
+		#if DISCORD_API
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		songDetails = CoolUtil.dashToSpace(SONG.song) + ' - ' + CoolUtil.difficultyFromNumber(storyDifficulty);
 
@@ -1407,6 +1410,7 @@ class PlayState extends MusicBeatState
 
 		// Updating Discord Rich Presence.
 		updateRPC(false);
+		#end
 
 		curSong = songData.song;
 		songMusic = new FlxSound().loadEmbedded(Paths.inst(SONG.song), false, true);

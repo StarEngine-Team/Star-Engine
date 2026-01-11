@@ -11,7 +11,9 @@ import haxe.CallStack;
 import haxe.io.Path;
 import lime.app.Application;
 import meta.*;
+#if DISCORD_API
 import meta.data.dependency.Discord;
+#end
 import meta.data.dependency.FNFTransition;
 import openfl.Assets;
 import openfl.Lib;
@@ -167,7 +169,7 @@ class Main extends Sprite
         #end
 
 		// begin the discord rich presence
-		#if discord_rpc
+		#if DISCORD_API
 		Discord.initializeRPC();
 		Discord.changePresence('');
 		#end

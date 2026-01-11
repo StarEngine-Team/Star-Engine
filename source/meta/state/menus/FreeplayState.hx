@@ -16,7 +16,9 @@ import lime.utils.Assets;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
 import meta.data.Song.SwagSong;
+#if DISCORD_API
 import meta.data.dependency.Discord;
+#end
 import meta.data.font.Alphabet;
 import openfl.media.Sound;
 import sys.FileSystem;
@@ -105,7 +107,7 @@ class FreeplayState extends MusicBeatState
 		// LOAD MUSIC
 		// ForeverTools.resetMenuMusic();
 
-		#if discord_rpc
+		#if DISCORD_API
 		Discord.changePresence('MENU SCREEN', 'Freeplay Menu');
 		#end
 

@@ -12,8 +12,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import meta.MusicBeat.MusicBeatState;
+#if DISCORD_API
 import meta.data.dependency.Discord;
-
+#end
 using StringTools;
 
 /**
@@ -44,7 +45,7 @@ class MainMenuState extends MusicBeatState
 		// make sure the music is playing
 		ForeverTools.resetMenuMusic();
 
-		#if discord_rpc
+		#if DISCORD_API
 		Discord.changePresence('MENU SCREEN', 'Main Menu');
 		#end
 

@@ -1,6 +1,6 @@
 package meta.data.dependency;
 
-#if discord_rpc
+#if DISCORD_API
 import discord_rpc.DiscordRpc;
 #end
 import lime.app.Application;
@@ -11,7 +11,7 @@ import lime.app.Application;
 **/
 class Discord
 {
-	#if discord_rpc
+	#if DISCORD_API
 	// set up the rich presence initially
 	public static function initializeRPC()
 	{

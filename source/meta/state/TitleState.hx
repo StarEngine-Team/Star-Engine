@@ -22,7 +22,9 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
+#if DISCORD_API
 import meta.data.dependency.Discord;
+#end
 import meta.data.font.Alphabet;
 import meta.state.menus.*;
 import openfl.Assets;
@@ -67,7 +69,7 @@ class TitleState extends MusicBeatState
 		if (!initialized)
 		{
 			///*
-			#if discord_rpc
+			#if DISCORD_API
 			Discord.changePresence('TITLE SCREEN', 'Main Menu');
 			#end
 
