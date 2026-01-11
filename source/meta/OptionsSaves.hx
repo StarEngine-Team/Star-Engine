@@ -3,7 +3,7 @@ package meta;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepadInputID;
-import mobile.flixel.input.FlxMobileInputID;
+import meta.mobile.flixel.input.FlxMobileInputID;
 
 class OptionsSaves {
 	public static var keyBinds:Map<String, Array<FlxKey>> = [

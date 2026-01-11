@@ -1,13 +1,13 @@
-package mobile.controls;
+package meta.mobile.controls;
 
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxDestroyUtil;
 import openfl.display.BitmapData;
 import openfl.display.Shape;
-import mobile.flixel.FlxButton;
-import mobile.flixel.input.FlxMobileInputManager;
-import mobile.flixel.input.FlxMobileInputID;
+import meta.mobile.flixel.FlxButton;
+import meta.mobile.flixel.input.FlxMobileInputManager;
+import meta.mobile.flixel.input.FlxMobileInputID;
 import haxe.ds.Map;
 
 /**

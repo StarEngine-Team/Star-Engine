@@ -1,8 +1,8 @@
-package mobile.flixel.input;
+package meta.mobile.flixel.input;
 
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import mobile.flixel.input.FlxMobileInputID;
-import mobile.flixel.FlxButton;
+import meta.mobile.flixel.input.FlxMobileInputID;
+import meta.mobile.flixel.FlxButton;
 import haxe.ds.Map;
 
 /**
