@@ -10,6 +10,11 @@ import meta.*;
 import meta.data.*;
 import meta.data.Conductor.BPMChangeEvent;
 import meta.data.dependency.FNFTransition;
+#if mobile
+import meta.mobile.controls.MobileHitbox;
+import meta.mobile.controls.MobileVirtualPad;
+import flixel.util.FlxDestroyUtil;
+#end
 
 /* 
 	Music beat state happens to be the first thing on my list of things to add, it just so happens to be the backbone of
@@ -24,6 +29,8 @@ class MusicBeatState extends FlxUIState
 	 * Array of notes showing when each measure/bar STARTS in STEPS
 	 * Usually rounded up??
 	 */
+	public static var instance:MusicBeatState;
+	
 	public var curBar:Int = 0;
 
 	public var curBeat:Int = 0;
@@ -37,10 +44,82 @@ class MusicBeatState extends FlxUIState
 	{
 		return Controls.instance;
 	}
+	
+	#if mobile
+	public var hitbox:MobileHitbox;
+	public var virtualPad:MobileVirtualPad;
+
+	public var virtualPadCam:FlxCamera;
+	public var hitboxCam:FlxCamera;
+
+	
+    public function addVirtualPad(DPad:MobileDPadMode, Action:MobileActionMode)
+	{
+		if (virtualPad != null)
+			removeVirtualPad();
+
+		virtualPad = new MobileVirtualPad(DPad, Action);
+		add(virtualPad);
+	}
+
+	public function removeVirtualPad()
+	{
+		if (virtualPad != null)
+			remove(virtualPad);
+	}
+
+	public function addHitbox(DefaultDrawTarget:Bool = false)
+	{
+		hitbox = new MobileHitbox();
+
+		hitboxCam = new FlxCamera();
+		hitboxCam.bgColor.alpha = 0;
+		FlxG.cameras.add(hitboxCam, DefaultDrawTarget);
+
+		hitbox.cameras = [hitboxCam];
+		hitbox.visible = false;
+		add(hitbox);
+	}
+
+	public function removeHitbox()
+	{
+		if (hitbox != null)
+			remove(hitbox);
+	}
+
+	public function addVirtualPadCamera(DefaultDrawTarget:Bool = false)
+	{
+		if (virtualPad != null)
+		{
+			virtualPadCam = new FlxCamera();
+			FlxG.cameras.add(virtualPadCam, DefaultDrawTarget);
+			virtualPadCam.bgColor.alpha = 0;
+			virtualPad.cameras = [virtualPadCam];
+		}
+	}
+
+	override function destroy()
+	{
+		super.destroy();
+
+		if (virtualPad != null)
+		{
+			virtualPad = FlxDestroyUtil.destroy(virtualPad);
+			virtualPad = null;
+		}
+
+		if (hitbox != null)
+		{
+			hitbox = FlxDestroyUtil.destroy(hitbox);
+			hitbox = null;
+		}
+	}
+	#end
 
 	// class create event
 	override function create()
 	{
+	    instance = this; // This isn't just for mobile
 		// dump
 		Paths.clearStoredMemory();
 		if ((!Std.isOfType(this, meta.state.PlayState)) && (!Std.isOfType(this, meta.state.charting.OriginalChartingState)))
@@ -140,8 +219,10 @@ class MusicBeatState extends FlxUIState
 
 class MusicBeatSubState extends FlxSubState
 {
+    public static var instance:MusicBeatSubState;
 	public function new()
 	{
+	    instance = this;
 		super();
 	}
 
@@ -161,6 +242,48 @@ class MusicBeatSubState extends FlxSubState
 	{
 		return Controls.instance;
 	}
+	
+	#if mobile
+	public var virtualPad:MobileVirtualPad;
+	public var virtualPadCam:FlxCamera;
+
+    public function addVirtualPad(DPad:MobileDPadMode, Action:MobileActionMode)
+	{
+		if (virtualPad != null)
+			removeVirtualPad();
+
+		virtualPad = new MobileVirtualPad(DPad, Action);
+		add(virtualPad);
+	}
+
+	public function removeVirtualPad()
+	{
+		if (virtualPad != null)
+			remove(virtualPad);
+	}
+
+	public function addVirtualPadCamera(DefaultDrawTarget:Bool = false)
+	{
+		if (virtualPad != null)
+		{
+			virtualPadCam = new FlxCamera();
+			FlxG.cameras.add(virtualPadCam, DefaultDrawTarget);
+			virtualPadCam.bgColor.alpha = 0;
+			virtualPad.cameras = [virtualPadCam];
+		}
+	}
+
+	override function destroy()
+	{
+		super.destroy();
+
+		if (virtualPad != null)
+		{
+			virtualPad = FlxDestroyUtil.destroy(virtualPad);
+			virtualPad = null;
+		}
+	}
+	#end
 
 	// class 'step' event
 	override function update(elapsed:Float)

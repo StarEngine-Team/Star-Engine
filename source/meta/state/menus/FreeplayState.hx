@@ -154,6 +154,11 @@ class FreeplayState extends MusicBeatState
 
 		changeSelection();
 		changeDiff();
+		
+		#if mobile
+		addVirtualPad(FULL_LEFT, A_B);
+		addVirtualPadCamera();
+		#end
 
 		// FlxG.sound.playMusic(Paths.music('title'), 0);
 		// FlxG.sound.music.fadeIn(2, 0, 0.8);

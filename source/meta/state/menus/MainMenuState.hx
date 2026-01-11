@@ -128,6 +128,11 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollow, null, camLerp);
 
 		updateSelection();
+		
+		#if mobile
+		addVirtualPad(UP_DOWN, A_B);
+		addVirtualPadCamera();
+		#end
 
 		// from the base game lol
 

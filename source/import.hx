@@ -27,11 +27,11 @@ import modding.Mods;
 import meta.Controls;
 import meta.OptionsSaves;
 import meta.CoolUtil;
+import meta.MusicBeat;
 
 #if mobile
 import meta.mobile.data.StorageSystem;
 #end
-
 
 using StringTools;
 #end

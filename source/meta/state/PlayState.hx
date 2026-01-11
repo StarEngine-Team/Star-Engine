@@ -331,6 +331,11 @@ class PlayState extends MusicBeatState
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		
+		#if mobile
+		addHitbox();
+		hitbox.visible = false;
+		#end
 
 		Paths.clearUnusedMemory();
 
@@ -1608,6 +1613,11 @@ class PlayState extends MusicBeatState
 	function endSong():Void
 	{
 		canPause = false;
+		
+		#if mobile
+		hitbox.visible = false;
+		#end
+		
 		songMusic.volume = 0;
 		vocals.volume = 0;
 		if (SONG.validScore)
@@ -1823,6 +1833,10 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
+		
+		#if mobile
+		hitbox.visible = true;
+		#end
 
 		camHUD.visible = true;
 

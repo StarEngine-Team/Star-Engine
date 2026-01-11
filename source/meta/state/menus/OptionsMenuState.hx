@@ -62,7 +62,6 @@ class OptionsMenuState extends MusicBeatState
 				[
 					['Gameplay Settings', null],
 					['', null],
-					['Controller Mode', getFromOption],
 					['Downscroll', getFromOption],
 					['Centered Notefield', getFromOption],
 					['Ghost Tapping', getFromOption],
@@ -132,6 +131,11 @@ class OptionsMenuState extends MusicBeatState
 		infoText.textField.background = true;
 		infoText.textField.backgroundColor = FlxColor.BLACK;
 		add(infoText);
+		
+		#if mobile
+		addVirtualPad(UP_DOWN, A_B);
+		addVirtualPadCamera();
+		#end
 
 		loadSubgroup('main');
 	}
