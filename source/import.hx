@@ -7,6 +7,7 @@ import flixel.sound.FlxSound;
 #else
 import flixel.system.FlxSound;
 #end
+import flixel.FlxCamera;
 
 #if LUA_ALLOWED
 import llua.*;

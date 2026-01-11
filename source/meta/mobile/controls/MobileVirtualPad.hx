@@ -1,4 +1,4 @@
-package mobile.controls;
+package meta.mobile.controls;
 
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
@@ -10,9 +10,8 @@ import flixel.util.FlxDestroyUtil;
 import mobile.flixel.FlxButton;
 import openfl.display.BitmapData;
 import openfl.utils.Assets;
-import mobile.flixel.input.FlxMobileInputManager;
-import mobile.flixel.input.FlxMobileInputID;
-import states.PlayState;
+import meta.mobile.flixel.input.FlxMobileInputManager;
+import meta.mobile.flixel.input.FlxMobileInputID;
 enum MobileDPadMode
 {
 	UP_DOWN;
