@@ -191,7 +191,7 @@ class StoryMenuState extends MusicBeatState
 		// very unprofessional yoshubs!
 		
 		#if mobile
-		addVirtualPad(UP_DOWN, A_B);
+		addVirtualPad(LEFT_FULL, A_B);
 		addVirtualPadCamera();
 		#end
 

@@ -51,8 +51,6 @@ class OptionsSaves {
 		'note_left'		=> [noteLEFT, LEFT2],
 		'note_down'		=> [noteDOWN, DOWN2],
 		'note_right'	=> [noteRIGHT, RIGHT2],
-		'heartbeat_left'=> [heartLEFT],
-		'heartbeat_right'=>[heartRIGHT],
 
 		'ui_up'			=> [UP, noteUP],
 		'ui_left'		=> [LEFT, noteLEFT],

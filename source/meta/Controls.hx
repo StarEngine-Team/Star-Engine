@@ -5,6 +5,8 @@ import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.gamepad.mappings.FlxGamepadMapping;
 import flixel.input.keyboard.FlxKey;
 import meta.mobile.flixel.input.FlxMobileInputID;
+import meta.MusicBeat.MusicBeatState;
+import meta.MusicBeat.MusicBeatSubState;
 
 class Controls
 {
@@ -247,15 +249,15 @@ class Controls
 	private function get_requested():Dynamic
 	{	
 		if (isInSubstate)
-			return MusicBeat.MusicBeatSubstate.instance;
+			return MusicBeatSubState.instance;
         else
-			return MusicBeat.MusicBeatState.instance;
+			return MusicBeatState.instance;
 	}
 	
 	@:noCompletion
 	private function get_gameplayRequest():Dynamic
 	{
-			return MusicBeat.MusicBeatState.instance.hitbox;
+			return MusicBeatState.instance.hitbox;
 	}
 	#end
 
