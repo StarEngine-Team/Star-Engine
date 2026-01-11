@@ -47,7 +47,7 @@ class Song
 	    var rawJson = null;
 	
 	    #if MODS_ALLOWED
-		var moddyFile:String = Paths.modsJson(folder.toLowerCase(), jsonInput.toLowerCase());
+		var moddyFile = Paths.modsJson(folder.toLowerCase(), jsonInput.toLowerCase());
 		if(FileSystem.exists(moddyFile)) {
 			rawJson = File.getContent(moddyFile).trim();
 		}

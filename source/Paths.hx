@@ -159,7 +159,7 @@ class Paths
 	public static function returnSound(path:String, key:String, ?modsAllowed:Bool = true)
 	{
 		// I hate this so god damn much
-		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library, modsAllowed);
+		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, null, modsAllowed);
 		#if sys
 		if(FileSystem.exists(gottenPath))
 			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
