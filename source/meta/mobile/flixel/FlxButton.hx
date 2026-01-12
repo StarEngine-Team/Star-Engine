@@ -243,7 +243,7 @@ class FlxTypedButton<T:FlxSprite> extends FlxSprite implements IFlxInput
 	{
 		// make sure the animation doesn't contain an invalid frame
 		/*frameIndex = Std.int(Math.min(frameIndex, animation.frames - 1));
-		animation.add(animationName, [frameIndex]);*/
+		animation.add(animationName, [frameIndex]);*/  
 	}
 
 	/**
