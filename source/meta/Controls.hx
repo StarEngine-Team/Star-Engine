@@ -208,7 +208,7 @@ class Controls
 	
 	private function hitboxPressed(keys:Array<FlxMobileInputID>):Bool
 	{
-		if (keys != null && requested.mobileControls != null && gameplayRequest != null)
+		if (keys != null && requested.hitbox != null && gameplayRequest != null)
 		{
 			if (gameplayRequest.anyPressed(keys))
 			{
@@ -221,7 +221,7 @@ class Controls
 	
 	private function hitboxJustPressed(keys:Array<FlxMobileInputID>):Bool
 	{
-		if (keys != null && requested.mobileControls != null && gameplayRequest != null)
+		if (keys != null && requested.hitbox != null && gameplayRequest != null)
 		{
 			if (gameplayRequest.anyJustPressed(keys))
 			{
@@ -234,7 +234,7 @@ class Controls
 	
 	private function hitboxJustReleased(keys:Array<FlxMobileInputID>):Bool
 	{
-		if (keys != null && requested.mobileControls != null && gameplayRequest != null)
+		if (keys != null && requested.hitbox != null && gameplayRequest != null)
 		{
 			if (gameplayRequest.anyJustReleased(keys))
 			{
