@@ -514,6 +514,11 @@ class PlayState extends MusicBeatState
 		stageBuild.stageUpdateConstant(elapsed, boyfriend, gf, opponent);
 
 		super.update(elapsed);
+		
+		#if mobile
+		if (controls.isInSubstate == true)
+            controls.isInSubstate = false;
+        #end
 
 		if (health > 2)
 			health = 2;

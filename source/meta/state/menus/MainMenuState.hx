@@ -30,7 +30,7 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'options'];
 	var canSnap:Array<Float> = [];
 
 	// the create 'state'
@@ -82,12 +82,12 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		// create the menu items themselves
-		var tex = Paths.getSparrowAtlas('menus/base/title/FNF_main_menu_assets');
-
 		// loop through the menu options
 		for (i in 0...optionShit.length)
 		{
+		    // create the menu items themselves
+	    	var tex = Paths.getSparrowAtlas('menus/base/mainmenu/menu_' + optionShit[i]);
+		
 			var menuItem:FlxSprite = new FlxSprite(0, 80 + (i * 200));
 			menuItem.frames = tex;
 			// add the animations in a cool way (real
@@ -250,6 +250,8 @@ class MainMenuState extends MusicBeatState
 								Main.switchState(new StoryMenuState());
 							case 'freeplay':
 								Main.switchState(new FreeplayState());
+							case 'credits':
+							    // Nothing for now
 							case 'options':
 								Main.switchState(new OptionsMenuState());
 						}
