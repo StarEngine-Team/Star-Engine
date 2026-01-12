@@ -541,7 +541,7 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 		{
 			// pause the game if the game is allowed to pause and enter is pressed
-			if (controls.PAUSE && startedCountdown && canPause)
+			if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 			{
 				pauseGame();
 			}
@@ -550,7 +550,7 @@ class PlayState extends MusicBeatState
 			if (!isStoryMode)
 			{
 				// charting state (more on that later)
-				if ((FlxG.keys.justPressed.SEVEN) && (!startingSong))
+				if ((controls.CHEAT) && (!startingSong))
 				{
 					resetMusic();
 					if (FlxG.keys.pressed.SHIFT)

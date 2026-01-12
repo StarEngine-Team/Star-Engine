@@ -36,6 +36,8 @@ class GameOverSubstate extends MusicBeatSubState
 		}
 
 		super();
+		
+		#if mobile controls.isInSubstate = true; #end
 
 		Conductor.songPosition = 0;
 
@@ -49,6 +51,11 @@ class GameOverSubstate extends MusicBeatSubState
 		add(camFollow);
 
 		Conductor.changeBPM(100);
+		
+		#if mobile
+		addVirtualPad(NONE, A_B);
+		addVirtualPadCamera();
+		#end
 
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width * 0.5, FlxG.height * 0.5));

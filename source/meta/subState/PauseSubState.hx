@@ -31,6 +31,8 @@ class PauseSubState extends MusicBeatSubState
 	public function new(x:Float, y:Float)
 	{
 		super();
+		
+		#if mobile controls.isInSubstate = true; #end
 
 		mutex = new Mutex();
 		Thread.create(function()
@@ -92,6 +94,11 @@ class PauseSubState extends MusicBeatSubState
 			songText.targetY = i;
 			grpMenuShit.add(songText);
 		}
+		
+		#if mobile
+		addVirtualPad(UP_DOWN, B);
+		addVirtualPadCamera();
+		#end
 
 		changeSelection();
 
