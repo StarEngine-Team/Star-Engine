@@ -100,7 +100,7 @@ class CreditsState extends MusicBeatState
 
 		iconArray[curSelected].alpha = 1;
 
-		for (item in grpCharacters.members)
+		for (item in grpMembers.members)
 		{
 			item.targetY = bullShit - curSelected;
 			bullShit++;
