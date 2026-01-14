@@ -36,7 +36,6 @@ class CreditsState extends MusicBeatState
 		{
 			var membersText:Alphabet = new Alphabet(0, (50 * i) + 30, TestCredits[i][0], true, false, 0.85);
 			membersText.isMenuItem = true;
-			membersText.middleX = true;
 			membersText.targetY = i;
 			membersText.ID = i;
 			grpMembers.add(membersText);
